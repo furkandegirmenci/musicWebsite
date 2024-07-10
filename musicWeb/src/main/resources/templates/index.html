@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Website</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-600">
+<h1>Hosgeldiniz</h1>
+
+
+<div>
+    <form method="POST" action="/music/add" enctype="multipart/form-data">
+        <label>Upload music</label>
+        <input type="file" name="file"/>
+        <input type="submit" value="gonder"/>
+        <button type="button" th:action="@{/music/add}">Upload music</button>
+    </form>
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+        <th scope="col"  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File Name</th>
+        <th scope="col"  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+        <th scope="col"  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Content</th>
+        <th scope="col"  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Object</th>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+        <tr th:each="list : ${list}">
+            <td th:text="${list.fileName}" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
+            <td th:text="${list.title}" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
+            <td th:text="${list.content}" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
+            <td th:text="${list}" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
+
+            <!--
+            <td>
+                <a th:href="http://localhost:8080/music/getAll">
+
+                </a>
+            </td>
+            -->
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--
+<div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Song Name
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Audio
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tr th:each="fileName : ${songFileNames}">
+                        <td th:text="${fileName}" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            Base name
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <audio controls>
+                                <source th:src="${'' + fileName}" type="audio/mpeg">
+                                Your browser does not support audio element
+                            </audio>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+</body>
+</html>
